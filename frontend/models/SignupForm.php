@@ -35,6 +35,9 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+
+            ['first_name','required'],
+            ['last_name','required'], 
         ];
     }
 
@@ -51,6 +54,8 @@ class SignupForm extends Model
         
         $user = new User();
         $user->username = $this->username;
+        $user->first_name = $this->first_name;
+        $user->last_name = $this->last_name;
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
